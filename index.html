@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    
+    <script type="module" src="/src/main.ts" defer></script>
+    <script src="./src/Validator.ts"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        new Validator({
+          form: '#form-1',
+          errorSelector: '.form-message',
+          rules: [
+            Validator.isEmail('#email','Vui long nhap Email'),
+            Validator.isMinLength('#password')
+
+          ],
+        });
+      });
+    </script>
+  </body>
+  <!-- <script src="./src/Validator.ts"></script> -->
+  
+
+  
+</html>
