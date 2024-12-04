@@ -226,3 +226,4 @@ private validates(options: ValidateOptions,rule: ValidatorRule,inputElement:HTML
     }
 }
 
+

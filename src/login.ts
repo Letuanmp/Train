@@ -1,46 +1,40 @@
-import './style.css'
-import './validator'
-export function formLogin(element: HTMLButtonElement) {
-    
-      element.innerHTML = `
-        <div class="main">
+interface User {
+  username: string; // Corrected typo from 'usename' to 'username'
+  password: string;
+}
 
-        <form action="" method="POST" class="form" id="form-1">
-            <h3 class="heading">Thành viên đăng ký</h3>
-            <p class="desc"></p>
-
-            <div class="spacer"></div>
-
-            <div class="form-group">
-            <label for="fullname" class="form-label">Tên đầy đủ</label>
-            <input id="fullname" name="fullname" type="text" placeholder="VD: Sơn Đặng" class="form-control">
-            <span class="form-message"></span>
-            </div>
-
-            <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
-            <span class="form-message"></span>
-            </div>
-
-            <div class="form-group">
-            <label for="password" class="form-label">Mật khẩu</label>
-            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-            <span class="form-message"></span>
-            </div>
-
-            <div class="form-group">
-            <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
-            <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
-            <span class="form-message"></span>
-            </div>
-
-            <button class="form-submit">Đăng ký</button>
-        </form>
-
-        </div>
-        `
-    
-  }
-
+async function getApi(): Promise<void> {
+  const apiUrl = 'http://training.mumesoft.com/api/login';
   
+  const username: string = 'admin';
+  const password: string = '123456';
+
+  const formData = new FormData();
+  formData.append('username', username);
+  formData.append('password', password);
+
+  try {
+      // Send POST request with form-data
+      const response = await fetch(apiUrl, {
+          method: 'POST',
+          body: formData,
+      });
+
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      // Handle API response
+      if (data.status) {
+          console.log('Login successful:', data.data);
+      } else {
+          console.error('Login failed:', data.msg);
+      }
+  } catch (error) {
+      console.error('Error calling API:', error);
+  }
+}
+
+getApi();

@@ -3,7 +3,7 @@ interface ValidatorOptions {
     formGroupSelector: string;
     errorSelector: string;
     rules: ValidatorRule[];
-    onSubmit?: (formValues: Record<string, any>) => void;
+    onSubmit?: (formValues: Record<string, any>) => void; 
 }
 
 interface ValidatorRule {

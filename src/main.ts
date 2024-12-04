@@ -1,6 +1,6 @@
 import './style.css'
 import './grid.css'
-import { formLogin } from './login.ts'
+import './login.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div id="root">
@@ -10,4 +10,3 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </div>
 `
 
-formLogin(document.querySelector<HTMLButtonElement>('#container')!)
