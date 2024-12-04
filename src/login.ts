@@ -7,7 +7,7 @@ export function formLogin(element: HTMLButtonElement) {
 
         <form action="" method="POST" class="form" id="form-1">
             <h3 class="heading">Thành viên đăng ký</h3>
-            <p class="desc">Cùng nhau học lập trình miễn phí tại F8 ❤️</p>
+            <p class="desc"></p>
 
             <div class="spacer"></div>
 

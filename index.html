@@ -16,10 +16,18 @@
         new Validator({
           form: '#form-1',
           errorSelector: '.form-message',
+          formGroupSelector: '.form-group',
           rules: [
+          Validator.isRequired('#fullname'),
+          Validator.isRequired('#email'),
             Validator.isEmail('#email','Vui long nhap Email'),
-            Validator.isMinLength('#password')
-
+            Validator.isRequired('#password'),
+            Validator.isMinLength('#password'),
+          Validator.isRequired('#password_confirmation'),
+            Validator.isConfirm('#password_confirmation',function(){return document.querySelector('#password').value},`vui long nhap dung mat khau`),
+            Validator.onSubmit= (data)=>{
+              console.log(data);
+            }
           ],
         });
       });
