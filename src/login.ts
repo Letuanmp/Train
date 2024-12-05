@@ -1,40 +1,34 @@
 interface User {
-  username: string; // Corrected typo from 'usename' to 'username'
+  username: string;
   password: string;
 }
+class login {
+  public async getApi(): Promise<void> {
+    const apiUrl = `${import.meta.env.VITE_API_URL}/login`;
+    let usernameInput: HTMLInputElement;
+    let passwordInput: HTMLInputElement;
+    let loginForm: HTMLFormElement;
+    usernameInput = document.getElementById("username") as HTMLInputElement;
+    passwordInput = document.getElementById("password") as HTMLInputElement;
+    loginForm = document.getElementById("loginForm") as HTMLFormElement;
+    const username: string = usernameInput.value;
+    const password: string = passwordInput.value;
 
-async function getApi(): Promise<void> {
-  const apiUrl = 'http://training.mumesoft.com/api/login';
-  
-  const username: string = 'admin';
-  const password: string = '123456';
-
-  const formData = new FormData();
-  formData.append('username', username);
-  formData.append('password', password);
-
-  try {
+    try {
       // Send POST request with form-data
       const response = await fetch(apiUrl, {
-          method: 'POST',
-          body: formData,
+        method: "POST",
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+        headers: { "Content-Type": "application/json" },
       });
 
-      if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
       const data = await response.json();
-
-      // Handle API response
-      if (data.status) {
-          console.log('Login successful:', data.data);
-      } else {
-          console.error('Login failed:', data.msg);
-      }
-  } catch (error) {
-      console.error('Error calling API:', error);
+      console.log(data);
+    } catch (error) {
+      console.error("Error calling API:", error);
+    }
   }
 }
-
-getApi();

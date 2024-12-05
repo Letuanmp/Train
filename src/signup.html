@@ -11,7 +11,11 @@
         <div class="container col c-4">
             <form id="loginForm" method="post" class="col c-4 container-login" action="">
                 <div class="heading">
-                    <h3>Sign in</h3>
+                    <h3>SIGN  UP</h3>
+                </div>
+                <div class="form-group">
+                    <input id="email" name="email" type="text" class="form-control" placeholder="Enter your email">
+                    <span class="form-message"></span>
                 </div>
                 <div class="form-group">
                     <input id="username" name="username" type="text" class="form-control" placeholder="Enter your username">
@@ -23,10 +27,10 @@
                 </div>
                 <div class="form-group">
                     <input type="checkbox" class="form-checkbox">
-                    <label for="remember">Remember me</label>   
+                    <label for="remember">I accept <a style="text-decoration: none; color: rgb(61, 144, 222);" href="#"> Terms and Conditions</a></label> 
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn-login btn-primary">Login</button>
+                    <button type="submit" class="btn-login btn-primary">Join Now</button>
                 </div>
                 <a href="#" class="forgot-password text-muted">Forgot Password?</a>
             </form>
@@ -46,11 +50,8 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <p class="text-center">Don't have an account? <a href="#" class="text-primary">Sign up</a></p>
-            </div>
+            
         </div>
     </div>
-    <script src="login.ts"></script>
 </body>
 </html>
